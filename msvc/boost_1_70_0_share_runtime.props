@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <BOOST_ROOT>E:\development\boost_1_70_0</BOOST_ROOT>
+    <BOOST_VER>1_70</BOOST_VER>
+    <DBG_LIB_POSTFIX>vc$(PlatformToolsetVersion)-mt-gd-$(PlatformTarget)-$(BOOST_VER)</DBG_LIB_POSTFIX>
+    <REL_LIB_POSTFIX>vc$(PlatformToolsetVersion)-mt-$(PlatformTarget)-$(BOOST_VER)</REL_LIB_POSTFIX>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)' == 'Debug' OR '$(Configuration)' == 'UnicodeDebug'">libboost_regex-$(DBG_LIB_POSTFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)' == 'Release' OR '$(Configuration)' == 'UnicodeRelease'">libboost_regex-$(REL_LIB_POSTFIX).lib;%(AdditionalDependencies)</AdditionalDependencies>
+
+      <AdditionalLibraryDirectories>$(BOOST_ROOT)\lib_$(PlatformTarget)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="BOOST_ROOT">
+      <Value>$(BOOST_ROOT)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="BOOST_VER">
+      <Value>$(BOOST_VER)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="DBG_LIB_POSTFIX">
+      <Value>$(DBG_LIB_POSTFIX)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="REL_LIB_POSTFIX">
+      <Value>$(REL_LIB_POSTFIX)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>  
+  </ItemGroup>
+</Project>
