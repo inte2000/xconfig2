@@ -1,5 +1,4 @@
-#include "stdafx.h"
-#include <sstream>
+#include "framework.h"
 #include "XConfig.h"
 
 void XConfig::Travel(XVisitor& visitor) const
@@ -15,17 +14,17 @@ void XConfig::Travel(XVisitor& visitor) const
     }
 }
 
-bool XConfig::GetBoolAttr(const std::string& section, const std::string& attr, bool default) const
+bool XConfig::GetBoolAttr(const std::string& section, const std::string& attr, bool defValue) const
 {
     auto secIt = m_AttrMap.find(section);
     if (secIt == m_AttrMap.end())
-        return default;
+        return defValue;
 
     auto rtn = secIt->second.GetAttr(attr);
     if(rtn.first)
         return (rtn.second == "true") ? true : false;
 
-    return default;
+    return defValue;
 }
 
 void XConfig::SetBoolAttr(const std::string & section, const std::string & attr, bool value)
@@ -37,17 +36,17 @@ void XConfig::SetBoolAttr(const std::string & section, const std::string & attr,
     sec.SetAttr(attr, value ? "true" : "false");
 }
 
-int XConfig::GetIntegerAttr(const std::string & section, const std::string & attr, int default) const
+int XConfig::GetIntegerAttr(const std::string & section, const std::string & attr, int defValue) const
 {
     auto secIt = m_AttrMap.find(section);
     if (secIt == m_AttrMap.end())
-        return default;
+        return defValue;
 
     auto rtn = secIt->second.GetAttr(attr);
     if (rtn.first)
         return std::atoi(rtn.second.c_str());
 
-    return default;
+    return defValue;
 }
 
 void XConfig::SetIntegerAttr(const std::string & section, const std::string & attr, int value)
@@ -66,11 +65,12 @@ void XConfig::SetIntegerAttr(const std::string & section, const std::string & at
 // /^[rR][gG][Bb][Aa]?[\(]([\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),){2}[\s]*(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),?[\s]*(0\.\d{1,2}|1|0)?[\)]{1}$/g
 // Æ¥Åä rgba(5,56,34,0.81)
 //^[rR][gG][Bb][\(]((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\,){2}(?:25[0-5]|2[0-4]\d|[01]?\d?\d))[\)]$
-COLORREF XConfig::GetColorAttr(const std::string & section, const std::string & attr, COLORREF default) const
+#ifdef _WINDOWS
+COLORREF XConfig::GetColorAttr(const std::string & section, const std::string & attr, COLORREF defValue) const
 {
     auto secIt = m_AttrMap.find(section);
     if (secIt == m_AttrMap.end())
-        return default;
+        return defValue;
 
     auto rtn = secIt->second.GetAttr(attr);
     if (rtn.first)
@@ -84,7 +84,7 @@ COLORREF XConfig::GetColorAttr(const std::string & section, const std::string & 
         }
     }
 
-    return default;
+    return defValue;
 }
 
 void XConfig::SetColorAttr(const std::string & section, const std::string & attr, COLORREF value)
@@ -97,6 +97,7 @@ void XConfig::SetColorAttr(const std::string & section, const std::string & attr
     ss << "(" << GetRValue(value) << "," << GetGValue(value) << "," << GetBValue(value) << ")";
     sec.SetAttr(attr, ss.str());
 }
+#endif
 
 std::string XConfig::GetStringAttr(const std::string & section, const std::string & attr) const
 {
@@ -120,17 +121,17 @@ void XConfig::SetStringAttr(const std::string & section, const std::string & att
     sec.SetAttr(attr, value);
 }
 
-double XConfig::GetFloatAttr(const std::string & section, const std::string & attr, double default) const
+double XConfig::GetFloatAttr(const std::string & section, const std::string & attr, double defValue) const
 {
     auto secIt = m_AttrMap.find(section);
     if (secIt == m_AttrMap.end())
-        return default;
+        return defValue;
 
     auto rtn = secIt->second.GetAttr(attr);
     if (rtn.first)
         return std::atof(rtn.second.c_str());
 
-    return default;
+    return defValue;
 }
 
 void XConfig::SetFloatAttr(const std::string & section, const std::string & attr, double value)

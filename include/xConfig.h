@@ -30,15 +30,17 @@ public:
     virtual ~XConfig() {}
     void Travel(XVisitor& visitor) const;
 
-    bool GetBoolAttr(const std::string& section, const std::string& attr, bool default = false) const;
+    bool GetBoolAttr(const std::string& section, const std::string& attr, bool defValue = false) const;
     void SetBoolAttr(const std::string& section, const std::string& attr, bool value);
-    int GetIntegerAttr(const std::string& section, const std::string& attr, int default = 0) const;
+    int GetIntegerAttr(const std::string& section, const std::string& attr, int defValue = 0) const;
     void SetIntegerAttr(const std::string& section, const std::string& attr, int value);
-    COLORREF GetColorAttr(const std::string& section, const std::string& attr, COLORREF default = RGB(0, 0, 0)) const;
+#ifdef _WINDOWS
+    COLORREF GetColorAttr(const std::string& section, const std::string& attr, COLORREF defValue = RGB(0, 0, 0)) const;
     void SetColorAttr(const std::string& section, const std::string& attr, COLORREF value);
+#endif   
     std::string GetStringAttr(const std::string& section, const std::string& attr) const;
     void SetStringAttr(const std::string& section, const std::string& attr, const std::string& value);
-    double GetFloatAttr(const std::string& section, const std::string& attr, double default = 0.0) const;
+    double GetFloatAttr(const std::string& section, const std::string& attr, double defValue = 0.0) const;
     void SetFloatAttr(const std::string& section, const std::string& attr, double value);
 
 protected:

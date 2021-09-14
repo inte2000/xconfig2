@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "framework.h"
 #include "XConfig.h"
 #include "XVisitor.h"
 #include "IniStorage.h"

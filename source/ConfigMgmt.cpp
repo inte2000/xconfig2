@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "framework.h"
 #include "ConfigMgmt.h"
 
 bool ConfigMgmt::SwitchStorage(XStorage* Storege)
