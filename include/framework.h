@@ -11,6 +11,7 @@
 
 #include "std_inc.h"
 #include "boost_inc.h"
+#include "modules.h"
 
 #ifdef _SUPPORT_XML
 #include "rapidxml.hpp"

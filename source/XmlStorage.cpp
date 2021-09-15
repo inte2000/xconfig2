@@ -1,7 +1,7 @@
-#ifdef _SUPPORT_XML
 #include "framework.h"
 #include "XConfig.h"
 #include "XVisitor.h"
+#ifdef _SUPPORT_XML
 #include "XmlStorage.h"
 #include "string_encode.h"
 
@@ -14,7 +14,7 @@ bool XmlStorage::LoadConfig(const std::string& position, XConfig& cfg)
         doc.parse<0>(xmlFile.data());
 
         rapidxml::xml_node<>* root = doc.first_node();
-        if (std::strcmp(root->name(), "config") != 0)
+        if (std::strcmp(root->name(), "Config") != 0)
             throw "invalid config file format!";
         rapidxml::xml_node<>* section = root->first_node();
         while (section != nullptr)
@@ -54,7 +54,7 @@ public:
     }
     void OnSectionBegin(const std::string& section)
     {
-        rapidxml::xml_node<>* root = m_doc.first_node();
+        rapidxml::xml_node<>* root = m_doc.first_node("Config");
         m_curSection = m_doc.allocate_node(rapidxml::node_element, section.c_str(), nullptr);
         root->append_node(m_curSection);
     }
@@ -84,7 +84,7 @@ bool XmlStorage::SaveConfig(const std::string& position, const XConfig& cfg)
         rapidxml::xml_document<> doc;
         rapidxml::xml_node<>* frot = doc.allocate_node(rapidxml::node_pi, doc.allocate_string("xml version='1.0' encoding='utf-8'"));
         doc.append_node(frot);
-        rapidxml::xml_node<>* root = doc.allocate_node(rapidxml::node_element, "config", nullptr);
+        rapidxml::xml_node<>* root = doc.allocate_node(rapidxml::node_element, "Config", nullptr);
         doc.append_node(root);
 
         XmlVisitor visitor(doc);

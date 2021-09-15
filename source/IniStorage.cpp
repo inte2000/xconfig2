@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "XConfig.h"
 #include "XVisitor.h"
+
+#if _SUPPORT_INI
 #include "IniStorage.h"
 #include "IniFile.h"
 
@@ -103,11 +105,11 @@ bool IniStorage::GetAttribute(const std::string& line, std::string& attr, std::s
         attr = line.substr(0, pos);
         boost::algorithm::trim_right(attr);
         value = line.substr(pos + 1, -1);
-        boost::algorithm::trim_right(value);
+        boost::algorithm::trim_left(value);
 
         return true;
     }
 
     return false;
 }
-
+#endif

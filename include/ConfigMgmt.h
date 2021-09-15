@@ -2,8 +2,15 @@
 
 #include <string>
 #include "XConfig.h"
-#include "IniStorage.h"
+#include "modules.h"
 
+#if _SUPPORT_INI
+#include "IniStorage.h"
+#endif
+
+#if _SUPPORT_XML
+#include "XmlStorage.h"
+#endif
 
 class ConfigMgmt
 {

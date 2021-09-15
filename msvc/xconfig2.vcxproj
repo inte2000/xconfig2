@@ -34,6 +34,7 @@
     <ClInclude Include="..\include\IniFile.h" />
     <ClInclude Include="..\include\IniStorage.h" />
     <ClInclude Include="..\include\json_api.h" />
+    <ClInclude Include="..\include\modules.h" />
     <ClInclude Include="..\include\std_inc.h" />
     <ClInclude Include="..\include\string_encode.h" />
     <ClInclude Include="..\include\xConfig.h" />
@@ -111,29 +112,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\lib\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\lib\$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\lib\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\lib\$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\lib\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\lib\$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\lib\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)..\lib\$(Configuration)\obj\$(PlatformTarget)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_SUPPORT_XML;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -148,7 +149,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_SUPPORT_XML;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -163,7 +164,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_SUPPORT_XML;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\include;$(BOOST_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -180,7 +181,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;_SUPPORT_XML;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>

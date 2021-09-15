@@ -3,6 +3,8 @@
 #include <string>
 #include "XStorage.h"
 
+#if _SUPPORT_INI
+
 class IniStorage: public XStorage
 {
 public:
@@ -15,4 +17,4 @@ protected:
     bool IsAttribute(const std::string& line);
     bool GetAttribute(const std::string& line, std::string& attr, std::string& value);
 };
-
+#endif
