@@ -19,3 +19,9 @@
 #include "rapidxml_iterators.hpp"
 #include "rapidxml_print.hpp"
 #endif
+
+#ifdef _SUPPORT_JSON
+#include "rapidjson/document.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+#endif

@@ -12,6 +12,11 @@
 #include "XmlStorage.h"
 #endif
 
+#if _SUPPORT_JSON
+#include "JsonStorage.h"
+#endif
+
+
 class ConfigMgmt
 {
 
