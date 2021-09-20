@@ -16,6 +16,10 @@
 #include "JsonStorage.h"
 #endif
 
+#if _SUPPORT_REGISTRY
+#include "RegistryStorage.h"
+#endif
+
 
 class ConfigMgmt
 {

@@ -2,24 +2,6 @@
 
 #include <string>
 
-int GBKToUTF8(const std::string& input, std::string& output);
-int UTF8ToGBK(const std::string& input, std::string& output);
-
-[[nodiscard]]
-inline std::string UTF8FromGBK(const std::string& input)
-{
-    std::string output;
-    GBKToUTF8(input, output);
-    return std::move(output);
-}
-
-[[nodiscard]]
-inline std::string GBKFromUTF8(const std::string& input)
-{
-    std::string output;
-    UTF8ToGBK(input, output);
-    return std::move(output);
-}
 
 int LocalCharsetToUTF8(const std::string& input, std::string& output);
 int UTF8ToLocalCharset(const std::string& input, std::string& output);
@@ -37,5 +19,24 @@ inline std::string UTF8FromLocalCharset(const std::string& input)
 {
     std::string output;
     LocalCharsetToUTF8(input, output);
+    return std::move(output);
+}
+
+int LocalCharsetToWcharT(const std::string& input, std::wstring& output);
+int WcharTToLocalCharset(const std::wstring& input, std::string& output);
+
+[[nodiscard]]
+inline std::string LocalCharsetFromWcharT(const std::wstring& input)
+{
+    std::string output;
+    WcharTToLocalCharset(input, output);
+    return std::move(output);
+}
+
+[[nodiscard]]
+inline std::wstring WcharTFromLocalCharset(const std::string& input)
+{
+    std::wstring output;
+    LocalCharsetToWcharT(input, output);
     return std::move(output);
 }

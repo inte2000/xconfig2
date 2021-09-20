@@ -24,7 +24,9 @@
     <ClCompile Include="..\source\IniStorage.cpp" />
     <ClCompile Include="..\source\JsonStorage.cpp" />
     <ClCompile Include="..\source\json_api.cpp" />
+    <ClCompile Include="..\source\RegistryStorage.cpp" />
     <ClCompile Include="..\source\string_encode.cpp" />
+    <ClCompile Include="..\source\WzRegKey.cpp" />
     <ClCompile Include="..\source\xConfig.cpp" />
     <ClCompile Include="..\source\XmlStorage.cpp" />
   </ItemGroup>
@@ -37,8 +39,10 @@
     <ClInclude Include="..\include\JsonStorage.h" />
     <ClInclude Include="..\include\json_api.h" />
     <ClInclude Include="..\include\modules.h" />
+    <ClInclude Include="..\include\RegistryStorage.h" />
     <ClInclude Include="..\include\std_inc.h" />
     <ClInclude Include="..\include\string_encode.h" />
+    <ClInclude Include="..\include\WzRegKey.h" />
     <ClInclude Include="..\include\xConfig.h" />
     <ClInclude Include="..\include\XmlStorage.h" />
     <ClInclude Include="..\include\xStorage.h" />
